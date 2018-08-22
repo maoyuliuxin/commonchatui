@@ -28,4 +28,14 @@ public class DefaultLeftTextViewHolder<T extends IMessage> extends BaseViewHolde
     public void setBind(T message) {
 
     }
+
+    @Override
+    public int getHeaderViewId() {
+        return 0;
+    }
+
+    @Override
+    public int getTimeViewId() {
+        return 0;
+    }
 }

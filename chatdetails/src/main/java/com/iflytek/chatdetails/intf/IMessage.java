@@ -16,4 +16,10 @@ public interface IMessage {
     String getText();
 
     boolean isLeft();
+
+    Object getHeaderRes();
+
+    String getHeadTime();
+
+    boolean isShowTime();
 }

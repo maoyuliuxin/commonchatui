@@ -75,7 +75,7 @@ public class ChatDetailsAdapter<T extends IMessage> extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder<T> holder, int position) {
-        holder.setBind(mMessages.get(position));
+        holder.setData(mMessages.get(position));
     }
 
     @Override

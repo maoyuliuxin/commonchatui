@@ -25,4 +25,19 @@ public interface IViewHolder<T extends IMessage> {
      */
     void setBind(T message);
 
+    /**
+     * 获取头像控件id
+     * 如果不需要获取头像，返回0
+     *
+     * @return
+     */
+    int getHeaderViewId();
+
+    /**
+     * 获取显示时间控件的id
+     * 如果该条目不需要显示时间，就返回0
+     *
+     * @return
+     */
+    int getTimeViewId();
 }
