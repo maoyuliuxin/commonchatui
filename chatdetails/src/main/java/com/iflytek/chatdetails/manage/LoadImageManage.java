@@ -1,4 +1,4 @@
-package com.iflytek.chatdetails.config;
+package com.iflytek.chatdetails.manage;
 
 import android.widget.ImageView;
 
@@ -24,5 +24,12 @@ public class LoadImageManage {
             throw new IllegalArgumentException("请初始化图片加载器");
         }
         sILoadImage.loadImage(url, imageView);
+    }
+
+    public static void loadHeaderImage(Object url, ImageView imageView) {
+        if (sILoadImage == null) {
+            throw new IllegalArgumentException("请初始化图片加载器");
+        }
+        sILoadImage.loadHeaderImage(url, imageView);
     }
 }

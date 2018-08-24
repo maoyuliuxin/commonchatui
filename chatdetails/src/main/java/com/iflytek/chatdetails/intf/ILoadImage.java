@@ -18,4 +18,6 @@ public interface ILoadImage {
      * @param imageView
      */
     void loadImage(Object url, ImageView imageView);
+
+    void loadHeaderImage(Object url, ImageView imageView);
 }

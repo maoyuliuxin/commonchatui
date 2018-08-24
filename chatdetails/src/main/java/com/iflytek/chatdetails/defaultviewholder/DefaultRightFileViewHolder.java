@@ -14,23 +14,25 @@ import com.iflytek.chatdetails.intf.IMessage;
  *
  * @author : qiangshen2
  */
-public class DefaultLeftTextViewHolder<T extends IMessage> extends BaseViewHolder<T> {
+public class DefaultRightFileViewHolder<T extends IMessage> extends BaseViewHolder<T> {
 
 
-    private TextView mTvLeft;
+    private TextView mFileName;
+    private TextView mFileState;
 
-    public DefaultLeftTextViewHolder(View itemView) {
+    public DefaultRightFileViewHolder(View itemView) {
         super(itemView);
     }
 
     @Override
     public void setView(View itemView) {
-        mTvLeft = itemView.findViewById(R.id.tv_left);
+        mFileName = itemView.findViewById(R.id.tv_file_name);
+        mFileState = itemView.findViewById(R.id.tv_file_state);
     }
 
     @Override
     public void setBind(T message) {
-        mTvLeft.setText(message.getText());
+        mFileName.setText(message.getFileName());
     }
 
     @Override

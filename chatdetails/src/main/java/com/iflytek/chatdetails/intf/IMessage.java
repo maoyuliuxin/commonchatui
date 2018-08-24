@@ -22,4 +22,10 @@ public interface IMessage {
     String getHeadTime();
 
     boolean isShowTime();
+
+    String getFileUrl();
+
+    String getFileName();
+
+    long getVoiceTime();
 }

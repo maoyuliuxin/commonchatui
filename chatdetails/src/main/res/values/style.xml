@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="header_time_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:background">@drawable/chat_item_time_hint_bg</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="left_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">35dp</item>
+        <item name="android:background">@drawable/aurora_receivetxt_bubble</item>
+    </style>
+
+    <style name="right_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">35dp</item>
+        <item name="android:background">@drawable/aurora_sendtxt_bubble</item>
+    </style>
+
+</resources>

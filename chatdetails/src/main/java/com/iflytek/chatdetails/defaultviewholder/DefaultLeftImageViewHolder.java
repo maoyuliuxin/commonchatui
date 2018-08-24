@@ -1,11 +1,12 @@
 package com.iflytek.chatdetails.defaultviewholder;
 
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
 import com.iflytek.chatdetails.intf.IMessage;
+import com.iflytek.chatdetails.manage.LoadImageManage;
 
 /**
  * description:
@@ -14,23 +15,23 @@ import com.iflytek.chatdetails.intf.IMessage;
  *
  * @author : qiangshen2
  */
-public class DefaultLeftTextViewHolder<T extends IMessage> extends BaseViewHolder<T> {
+public class DefaultLeftImageViewHolder<T extends IMessage> extends BaseViewHolder<T> {
 
 
-    private TextView mTvLeft;
+    private ImageView mImageView;
 
-    public DefaultLeftTextViewHolder(View itemView) {
+    public DefaultLeftImageViewHolder(View itemView) {
         super(itemView);
     }
 
     @Override
     public void setView(View itemView) {
-        mTvLeft = itemView.findViewById(R.id.tv_left);
+        mImageView = itemView.findViewById(R.id.iv_left);
     }
 
     @Override
     public void setBind(T message) {
-        mTvLeft.setText(message.getText());
+        LoadImageManage.loadImage(message.getFileUrl(), mImageView);
     }
 
     @Override

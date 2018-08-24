@@ -1,5 +1,6 @@
 package com.iflytek.chatdetails.intf;
 
+import android.content.Context;
 import android.view.View;
 
 /**
@@ -40,4 +41,11 @@ public interface IViewHolder<T extends IMessage> {
      * @return
      */
     int getTimeViewId();
+
+    /**
+     * 获取Context的方法
+     *
+     * @return
+     */
+    Context getContext();
 }

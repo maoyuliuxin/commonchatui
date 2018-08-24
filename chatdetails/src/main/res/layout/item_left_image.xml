@@ -23,9 +23,12 @@
             android:scaleType="centerCrop" />
 
 
-        <TextView
-            android:id="@+id/tv_left"
-            style="@style/left_text_style" />
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="35dp" />
 
     </LinearLayout>
 

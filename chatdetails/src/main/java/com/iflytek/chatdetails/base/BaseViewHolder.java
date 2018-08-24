@@ -1,12 +1,13 @@
 package com.iflytek.chatdetails.base;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iflytek.chatdetails.config.LoadImageManage;
+import com.iflytek.chatdetails.manage.LoadImageManage;
 import com.iflytek.chatdetails.intf.IMessage;
 import com.iflytek.chatdetails.intf.IViewHolder;
 
@@ -20,11 +21,13 @@ import com.iflytek.chatdetails.intf.IViewHolder;
 abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.ViewHolder implements IViewHolder<T> {
 
     private View mItemView;
+    private final Context mContext;
 
     public BaseViewHolder(View itemView) {
         super(itemView);
         mItemView = itemView;
         setView(itemView);
+        mContext = itemView.getContext();
     }
 
     public void setData(T message) {
@@ -33,12 +36,17 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
         setShowTime(message.getHeadTime(), message.isShowTime());
     }
 
+    @Override
+    public Context getContext() {
+        return mContext;
+    }
+
     private void setShowTime(String headTime, boolean isShowTime) {
         if (getTimeViewId() == 0) {
             return;
         }
         TextView textView = mItemView.findViewById(getTimeViewId());
-        if (isShowTime && TextUtils.isEmpty(headTime)) {
+        if (isShowTime && !TextUtils.isEmpty(headTime)) {
             textView.setVisibility(View.VISIBLE);
             textView.setText(headTime);
         } else {
@@ -51,6 +59,6 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
             return;
         }
         ImageView imageView = mItemView.findViewById(getHeaderViewId());
-        LoadImageManage.loadImage(headerRes, imageView);
+        LoadImageManage.loadHeaderImage(headerRes, imageView);
     }
 }

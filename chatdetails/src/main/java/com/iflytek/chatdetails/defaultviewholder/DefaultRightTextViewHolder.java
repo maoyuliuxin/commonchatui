@@ -7,30 +7,31 @@ import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
 import com.iflytek.chatdetails.intf.IMessage;
 
+import org.w3c.dom.Text;
+
 /**
  * description:
- * data: 2018/8/15
+ * data: 2018/8/22
  * email: qiangshen2@iflytek.com
  *
  * @author : qiangshen2
  */
-public class DefaultLeftTextViewHolder<T extends IMessage> extends BaseViewHolder<T> {
+public class DefaultRightTextViewHolder<T extends IMessage> extends BaseViewHolder<T> {
 
+    private TextView mTvRight;
 
-    private TextView mTvLeft;
-
-    public DefaultLeftTextViewHolder(View itemView) {
+    public DefaultRightTextViewHolder(View itemView) {
         super(itemView);
     }
 
     @Override
     public void setView(View itemView) {
-        mTvLeft = itemView.findViewById(R.id.tv_left);
+        mTvRight = itemView.findViewById(R.id.tv_right);
     }
 
     @Override
     public void setBind(T message) {
-        mTvLeft.setText(message.getText());
+        mTvRight.setText(message.getText());
     }
 
     @Override

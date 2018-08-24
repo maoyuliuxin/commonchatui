@@ -13,6 +13,13 @@ public class MyMessage implements IMessage {
 
     private int type;
 
+    private long voiceTime;
+
+    public MyMessage(int type, long voiceTime) {
+        this.type = type;
+        this.voiceTime = voiceTime;
+    }
+
     public MyMessage(int type) {
         this.type = type;
     }
@@ -29,11 +36,41 @@ public class MyMessage implements IMessage {
 
     @Override
     public String getText() {
-        return null;
+        return "1231231245645";
     }
 
     @Override
     public boolean isLeft() {
         return false;
+    }
+
+    @Override
+    public Object getHeaderRes() {
+        return "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2024669388,469028839&fm=27&gp=0.jpg";
+    }
+
+    @Override
+    public String getHeadTime() {
+        return "2018-1999-1111";
+    }
+
+    @Override
+    public boolean isShowTime() {
+        return true;
+    }
+
+    @Override
+    public String getFileUrl() {
+        return "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2024669388,469028839&fm=27&gp=0.jpg";
+    }
+
+    @Override
+    public String getFileName() {
+        return "我是测试的";
+    }
+
+    @Override
+    public long getVoiceTime() {
+        return voiceTime;
     }
 }

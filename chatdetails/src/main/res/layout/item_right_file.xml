@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="22dp">
+
+    <TextView
+        android:id="@+id/tv_header_time"
+        style="@style/header_time_style" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_header"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dip_10"
+            android:layout_marginRight="@dimen/dip_13"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dip_35"
+            android:layout_toLeftOf="@id/iv_header"
+            android:background="@drawable/aurora_sendtxt_bubble"
+            android:paddingLeft="@dimen/dip_10">
+
+            <TextView
+                android:id="@+id/tv_file_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dip_10"
+                android:text="1321321"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tv_file_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@id/tv_file_name"
+                android:text="已完成"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size" />
+
+            <ImageView
+                android:id="@+id/file_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/tv_file_name"
+                android:src="@drawable/file_icon" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

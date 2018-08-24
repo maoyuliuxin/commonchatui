@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">chatdetails</string>
+    <string name="time_sign">\"</string>
 </resources>

@@ -13,19 +13,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingLeft="35dp">
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp" />
 
         <ImageView
             android:id="@+id/iv_header"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
             android:scaleType="centerCrop" />
-
-
-        <TextView
-            android:id="@+id/tv_left"
-            style="@style/left_text_style" />
 
     </LinearLayout>
 
