@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iflytek.chatdetails.event.EventHeader;
 import com.iflytek.chatdetails.manage.LoadImageManage;
 import com.iflytek.chatdetails.intf.IMessage;
 import com.iflytek.chatdetails.intf.IViewHolder;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * description: viewHolder父类，所有的viewHolder都需要继承该viewHolder
@@ -22,6 +25,7 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
 
     private View mItemView;
     private final Context mContext;
+    protected T mMessage;
 
     public BaseViewHolder(View itemView) {
         super(itemView);
@@ -31,6 +35,7 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
     }
 
     public void setData(T message) {
+        mMessage = message;
         setBind(message);
         setHeaderImage(message.getHeaderRes());
         setShowTime(message.getHeadTime(), message.isShowTime());
@@ -60,6 +65,12 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
         }
         ImageView imageView = mItemView.findViewById(getHeaderViewId());
         LoadImageManage.loadHeaderImage(headerRes, imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new EventHeader<T>(mMessage));
+            }
+        });
     }
 
     @Override

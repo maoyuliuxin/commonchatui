@@ -8,8 +8,12 @@ import com.github.lzyzsd.circleprogress.CircleProgress;
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
 import com.iflytek.chatdetails.constant.StateConstant;
+import com.iflytek.chatdetails.event.EventFile;
+import com.iflytek.chatdetails.event.EventSendError;
 import com.iflytek.chatdetails.intf.IMessage;
 import com.iflytek.chatdetails.manage.LoadImageManage;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * description:
@@ -36,6 +40,18 @@ public class DefaultLeftFileViewHolder<T extends IMessage> extends BaseViewHolde
         mFileState = itemView.findViewById(R.id.tv_file_state);
         mProgressLoad = itemView.findViewById(R.id.progress_load);
         mIvError = itemView.findViewById(R.id.iv_error);
+        mIvError.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new EventSendError<T>(mMessage));
+            }
+        });
+        itemView.findViewById(R.id.file_item).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new EventFile<>(mMessage));
+            }
+        });
         mProgressLoad.setAlpha(0.5f);
     }
 

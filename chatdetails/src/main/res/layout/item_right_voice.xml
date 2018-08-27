@@ -16,11 +16,18 @@
         android:layout_gravity="right"
         android:orientation="horizontal">
 
+        <com.iflytek.chatdetails.wighet.UploadStateView
+            android:id="@+id/upload_state_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dip_35"
+            android:layout_marginRight="@dimen/dip_10" />
+
         <LinearLayout
             android:id="@+id/voice_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
             android:background="@drawable/aurora_sendtxt_bubble"
             android:gravity="center_vertical"
             android:orientation="horizontal"

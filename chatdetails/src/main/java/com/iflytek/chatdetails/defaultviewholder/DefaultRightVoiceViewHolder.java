@@ -8,9 +8,13 @@ import android.widget.TextView;
 
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
+import com.iflytek.chatdetails.event.EventSendError;
 import com.iflytek.chatdetails.intf.IMessage;
 import com.iflytek.chatdetails.manage.VoicePlayerManage;
 import com.iflytek.chatdetails.utils.SizeUtils;
+import com.iflytek.chatdetails.wighet.UploadStateView;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * description:
@@ -24,7 +28,8 @@ public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHol
 
     private AnimationDrawable mMVoiceIconDrawable;
     private TextView mVoiceTime;
-    private T mMessage;
+
+    private UploadStateView mUploadStateView;
 
     public DefaultRightVoiceViewHolder(View itemView) {
         super(itemView);
@@ -40,12 +45,15 @@ public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHol
         voiceItem.setOnClickListener(this);
 
         mVoiceTime = itemView.findViewById(R.id.tv_voice_time);
+
+        mUploadStateView = itemView.findViewById(R.id.upload_state_view);
+        mUploadStateView.setOnClick(this);
     }
 
     @Override
     public void setBind(T message) {
-        mMessage = message;
         SizeUtils.setRightVoiceWith(getContext(), mVoiceTime, message.getVoiceTime());
+        mUploadStateView.setState(message.getFileLoadProgress());
         Log.e("shen", "isPlayer=" + message.isPlayer());
         if (mMessage.isPlayer()) {
             mMVoiceIconDrawable.start();
@@ -73,6 +81,8 @@ public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHol
             } else {
                 startPlayer();
             }
+        } else if (v.getId() == R.id.iv_error) {
+            EventBus.getDefault().post(new EventSendError<>(mMessage));
         }
     }
 
