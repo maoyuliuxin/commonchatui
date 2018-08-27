@@ -23,25 +23,46 @@ import java.util.ArrayList;
  */
 public class ChatDetailsAdapter<T extends IMessage> extends RecyclerView.Adapter<BaseViewHolder<T>> {
     private ArrayList<T> mMessages = new ArrayList<>();
+    private final RecyclerView mRecyclerView;
+
+    public ChatDetailsAdapter(RecyclerView recyclerView) {
+        mRecyclerView = recyclerView;
+    }
 
     public void addData(T message) {
+        addData(message, false);
+    }
+
+    public void addData(T message, boolean isToEnd) {
         mMessages.add(message);
         notifyItemRangeInserted(mMessages.size() - 1, 1);
+        if (isToEnd) {
+            mRecyclerView.scrollToPosition(mMessages.size() - 1);
+        }
     }
 
-    public void addData(ArrayList<T> messages) {
+    public void addData(ArrayList<T> messages, boolean isToEnd) {
         mMessages.addAll(messages);
         notifyItemMoved(mMessages.size() - messages.size(), mMessages.size());
+        if (isToEnd) {
+            mRecyclerView.scrollToPosition(mMessages.size() - 1);
+        }
     }
 
-    public void addDataToHeader(ArrayList<T> messages) {
+    public void addDataToHeader(ArrayList<T> messages, boolean isToHeader) {
         mMessages.addAll(0, messages);
         notifyItemRangeInserted(0, messages.size());
+        if (isToHeader) {
+            mRecyclerView.scrollToPosition(0);
+        }
     }
 
-    public void addDataToHeader(T message) {
+    public void addDataToHeader(T message, boolean isToHeader) {
         mMessages.add(0, message);
         notifyItemRangeInserted(0, 1);
+        if (isToHeader) {
+            mRecyclerView.scrollToPosition(0);
+        }
     }
 
     public void updateData(T message, int messageId) {

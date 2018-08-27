@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         initImageLoad()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val chatDetailsAdapter = ChatDetailsAdapter<MyMessage>()
+        val chatDetailsAdapter = ChatDetailsAdapter<MyMessage>(recyclerView)
         recyclerView.adapter = chatDetailsAdapter
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
 
-        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1), true)
     }
 
     private fun initImageLoad() {
