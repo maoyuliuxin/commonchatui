@@ -26,7 +26,7 @@ public class ChatDetailsAdapter<T extends IMessage> extends RecyclerView.Adapter
 
     public void addData(T message) {
         mMessages.add(message);
-        notifyDataSetChanged();
+        notifyItemRangeInserted(mMessages.size() - 1, 1);
     }
 
     public void addData(ArrayList<T> messages) {

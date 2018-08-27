@@ -22,6 +22,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         val chatDetailsAdapter = ChatDetailsAdapter<MyMessage>()
         recyclerView.adapter = chatDetailsAdapter
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.LEFT_TEXT_TYPE))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_TEXT_TYPE))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.LEFT_IMAGE_TYPE))
@@ -37,6 +46,13 @@ class MainActivity : AppCompatActivity() {
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 20))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 60))
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 5))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+        chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
+
         chatDetailsAdapter.addData(MyMessage(ConfigConstant.RIGHT_VOICE_TYPE, 1))
     }
 

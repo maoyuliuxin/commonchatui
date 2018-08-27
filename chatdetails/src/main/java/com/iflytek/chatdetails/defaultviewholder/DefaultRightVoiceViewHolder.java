@@ -1,6 +1,7 @@
 package com.iflytek.chatdetails.defaultviewholder;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
 import com.iflytek.chatdetails.intf.IMessage;
+import com.iflytek.chatdetails.manage.VoicePlayerManage;
 import com.iflytek.chatdetails.utils.SizeUtils;
 
 /**
@@ -20,10 +22,9 @@ import com.iflytek.chatdetails.utils.SizeUtils;
 public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHolder<T> implements View.OnClickListener {
 
 
-    private ImageView mVoiceIcon;
     private AnimationDrawable mMVoiceIconDrawable;
-    private View mVoiceItem;
     private TextView mVoiceTime;
+    private T mMessage;
 
     public DefaultRightVoiceViewHolder(View itemView) {
         super(itemView);
@@ -31,19 +32,27 @@ public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHol
 
     @Override
     public void setView(View itemView) {
-        mVoiceIcon = itemView.findViewById(R.id.voice_icon);
-        mVoiceIcon.setBackgroundResource(R.drawable.aurora_anim_right_voice);
-        mMVoiceIconDrawable = (AnimationDrawable) mVoiceIcon.getDrawable();
+        ImageView voiceIcon = itemView.findViewById(R.id.voice_icon);
+        voiceIcon.setBackgroundResource(R.drawable.aurora_anim_right_voice);
+        mMVoiceIconDrawable = (AnimationDrawable) voiceIcon.getDrawable();
 
-        mVoiceItem = itemView.findViewById(R.id.voice_item);
-        mVoiceItem.setOnClickListener(this);
+        View voiceItem = itemView.findViewById(R.id.voice_item);
+        voiceItem.setOnClickListener(this);
 
         mVoiceTime = itemView.findViewById(R.id.tv_voice_time);
     }
 
     @Override
     public void setBind(T message) {
+        mMessage = message;
         SizeUtils.setRightVoiceWith(getContext(), mVoiceTime, message.getVoiceTime());
+        Log.e("shen", "isPlayer=" + message.isPlayer());
+        if (mMessage.isPlayer()) {
+            mMVoiceIconDrawable.start();
+        } else {
+            mMVoiceIconDrawable.stop();
+            mMVoiceIconDrawable.setVisible(true, true);
+        }
     }
 
     @Override
@@ -60,13 +69,26 @@ public class DefaultRightVoiceViewHolder<T extends IMessage> extends BaseViewHol
     public void onClick(View v) {
         if (v.getId() == R.id.voice_item) {
             if (mMVoiceIconDrawable.isRunning()) {
-                mMVoiceIconDrawable.stop();
-                mMVoiceIconDrawable.setVisible(true, true);
-                //TODO 语音停止
+                stopPlayer();
             } else {
-                //TODO 语音播放
-                mMVoiceIconDrawable.start();
+                startPlayer();
             }
         }
+    }
+
+    @Override
+    public void startPlayer() {
+        mMessage.setIsPlayer(true);
+        mMVoiceIconDrawable.start();
+        VoicePlayerManage.getInstance().startPlayer(this, mMessage);
+    }
+
+
+    @Override
+    public void stopPlayer() {
+        mMessage.setIsPlayer(false);
+        mMVoiceIconDrawable.stop();
+        mMVoiceIconDrawable.setVisible(true, true);
+        VoicePlayerManage.getInstance().stopPlayer();
     }
 }

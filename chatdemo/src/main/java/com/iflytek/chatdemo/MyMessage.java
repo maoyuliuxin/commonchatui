@@ -15,6 +15,8 @@ public class MyMessage implements IMessage {
 
     private long voiceTime;
 
+    private boolean isPlayer;
+
     public MyMessage(int type, long voiceTime) {
         this.type = type;
         this.voiceTime = voiceTime;
@@ -72,5 +74,15 @@ public class MyMessage implements IMessage {
     @Override
     public long getVoiceTime() {
         return voiceTime;
+    }
+
+    @Override
+    public boolean isPlayer() {
+        return isPlayer;
+    }
+
+    @Override
+    public void setIsPlayer(boolean isPlayer) {
+        this.isPlayer = isPlayer;
     }
 }

@@ -61,4 +61,14 @@ abstract public class BaseViewHolder<T extends IMessage> extends RecyclerView.Vi
         ImageView imageView = mItemView.findViewById(getHeaderViewId());
         LoadImageManage.loadHeaderImage(headerRes, imageView);
     }
+
+    @Override
+    public void startPlayer() {
+
+    }
+
+    @Override
+    public void stopPlayer() {
+
+    }
 }

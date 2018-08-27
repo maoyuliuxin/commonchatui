@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
 import com.iflytek.chatdetails.intf.IMessage;
+import com.iflytek.chatdetails.manage.VoicePlayerManage;
 import com.iflytek.chatdetails.utils.SizeUtils;
 
 /**
@@ -24,6 +25,7 @@ public class DefaultLeftVoiceViewHolder<T extends IMessage> extends BaseViewHold
     private AnimationDrawable mMVoiceIconDrawable;
     private View mVoiceItem;
     private TextView mVoiceTime;
+    private T mMessage;
 
     public DefaultLeftVoiceViewHolder(View itemView) {
         super(itemView);
@@ -43,7 +45,14 @@ public class DefaultLeftVoiceViewHolder<T extends IMessage> extends BaseViewHold
 
     @Override
     public void setBind(T message) {
+        mMessage = message;
         SizeUtils.setLeftVoiceWith(getContext(), mVoiceTime, message.getVoiceTime());
+        if (message.isPlayer()) {
+            mMVoiceIconDrawable.start();
+        } else {
+            mMVoiceIconDrawable.stop();
+            mMVoiceIconDrawable.setVisible(true, true);
+        }
     }
 
     @Override
@@ -60,13 +69,26 @@ public class DefaultLeftVoiceViewHolder<T extends IMessage> extends BaseViewHold
     public void onClick(View v) {
         if (v.getId() == R.id.voice_item) {
             if (mMVoiceIconDrawable.isRunning()) {
-                mMVoiceIconDrawable.stop();
-                mMVoiceIconDrawable.setVisible(true, true);
-                //TODO 语音停止
+                stopPlayer();
             } else {
-                //TODO 语音播放
-                mMVoiceIconDrawable.start();
+                startPlayer();
             }
         }
+    }
+
+    @Override
+    public void startPlayer() {
+        mMessage.setIsPlayer(true);
+        mMVoiceIconDrawable.start();
+        VoicePlayerManage.getInstance().startPlayer(this,mMessage);
+    }
+
+
+    @Override
+    public void stopPlayer() {
+        mMessage.setIsPlayer(false);
+        mMVoiceIconDrawable.stop();
+        mMVoiceIconDrawable.setVisible(true, true);
+        VoicePlayerManage.getInstance().stopPlayer();
     }
 }

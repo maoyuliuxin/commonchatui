@@ -48,4 +48,8 @@ public interface IViewHolder<T extends IMessage> {
      * @return
      */
     Context getContext();
+
+    void startPlayer();
+
+    void stopPlayer();
 }

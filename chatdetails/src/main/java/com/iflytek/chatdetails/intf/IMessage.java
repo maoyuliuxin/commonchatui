@@ -28,4 +28,8 @@ public interface IMessage {
     String getFileName();
 
     long getVoiceTime();
+
+    boolean isPlayer();
+
+    void setIsPlayer(boolean isPlayer);
 }
