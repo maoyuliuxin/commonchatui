@@ -27,7 +27,6 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="35dp"
             android:background="@drawable/aurora_receivetxt_bubble"
             android:paddingLeft="@dimen/dip_10">
 
@@ -58,8 +57,23 @@
                 android:text="已完成"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size" />
+
+            <com.github.lzyzsd.circleprogress.CircleProgress
+                android:id="@+id/progress_load"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true" />
+
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/iv_error"
+            android:layout_width="@dimen/dip_24"
+            android:layout_height="@dimen/dip_24"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dip_10"
+            android:layout_marginRight="@dimen/dip_35"
+            android:src="@drawable/aurora_send_msg_error" />
 
     </LinearLayout>
 

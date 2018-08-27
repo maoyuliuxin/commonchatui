@@ -6,4 +6,6 @@
     <dimen name="dip_35">35dp</dimen>
     <dimen name="dip_5">5dp</dimen>
     <dimen name="dip_20">20dp</dimen>
+    <dimen name="dip_100">100dp</dimen>
+    <dimen name="dip_24">24dp</dimen>
 </resources>

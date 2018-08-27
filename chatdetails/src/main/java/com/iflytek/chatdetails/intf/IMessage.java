@@ -27,6 +27,8 @@ public interface IMessage {
 
     String getFileName();
 
+    int getFileLoadProgress();
+
     long getVoiceTime();
 
     boolean isPlayer();

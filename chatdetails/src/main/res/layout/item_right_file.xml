@@ -25,9 +25,9 @@
             android:scaleType="centerCrop" />
 
         <RelativeLayout
+            android:id="@+id/file_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dip_35"
             android:layout_toLeftOf="@id/iv_header"
             android:background="@drawable/aurora_sendtxt_bubble"
             android:paddingLeft="@dimen/dip_10">
@@ -58,7 +58,24 @@
                 android:layout_toRightOf="@id/tv_file_name"
                 android:src="@drawable/file_icon" />
 
+            <com.github.lzyzsd.circleprogress.CircleProgress
+                android:id="@+id/progress_load"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_centerInParent="true" />
+
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_error"
+            android:layout_width="@dimen/dip_24"
+            android:layout_height="@dimen/dip_24"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dip_35"
+            android:layout_marginRight="@dimen/dip_10"
+            android:layout_toLeftOf="@id/file_item"
+            android:src="@drawable/aurora_send_msg_error" />
 
     </RelativeLayout>
 

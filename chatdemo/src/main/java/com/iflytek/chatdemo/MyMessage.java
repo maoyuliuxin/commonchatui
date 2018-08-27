@@ -72,6 +72,11 @@ public class MyMessage implements IMessage {
     }
 
     @Override
+    public int getFileLoadProgress() {
+        return 50;
+    }
+
+    @Override
     public long getVoiceTime() {
         return voiceTime;
     }

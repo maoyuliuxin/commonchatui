@@ -4,8 +4,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.lzyzsd.circleprogress.CircleProgress;
 import com.iflytek.chatdetails.R;
 import com.iflytek.chatdetails.base.BaseViewHolder;
+import com.iflytek.chatdetails.constant.StateConstant;
 import com.iflytek.chatdetails.intf.IMessage;
 import com.iflytek.chatdetails.manage.LoadImageManage;
 
@@ -21,6 +23,8 @@ public class DefaultLeftFileViewHolder<T extends IMessage> extends BaseViewHolde
 
     private TextView mFileName;
     private TextView mFileState;
+    private CircleProgress mProgressLoad;
+    private ImageView mIvError;
 
     public DefaultLeftFileViewHolder(View itemView) {
         super(itemView);
@@ -30,11 +34,25 @@ public class DefaultLeftFileViewHolder<T extends IMessage> extends BaseViewHolde
     public void setView(View itemView) {
         mFileName = itemView.findViewById(R.id.tv_file_name);
         mFileState = itemView.findViewById(R.id.tv_file_state);
+        mProgressLoad = itemView.findViewById(R.id.progress_load);
+        mIvError = itemView.findViewById(R.id.iv_error);
+        mProgressLoad.setAlpha(0.5f);
     }
 
     @Override
     public void setBind(T message) {
         mFileName.setText(message.getFileName());
+        if (message.getFileLoadProgress() == StateConstant.SUCCESS_LOAD) {
+            mProgressLoad.setVisibility(View.GONE);
+            mIvError.setVisibility(View.GONE);
+        } else if (message.getFileLoadProgress() == StateConstant.DEFEAT_LOAD) {
+            mIvError.setVisibility(View.VISIBLE);
+            mProgressLoad.setVisibility(View.GONE);
+        } else {
+            mProgressLoad.setVisibility(View.VISIBLE);
+            mIvError.setVisibility(View.GONE);
+            mProgressLoad.setProgress(message.getFileLoadProgress());
+        }
     }
 
     @Override
